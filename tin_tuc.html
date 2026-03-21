@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIN TỨC | PAFVN GOVERNMENT</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #0091ff;
+            --accent: #d32f2f;
+            --discord: #5865F2;
+            --bg-light: #f4f7fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Be Vietnam Pro', sans-serif; 
+            background-color: var(--bg-light); 
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- TOP BAR (Đồng hồ) --- */
+        .top-bar { background: #002d5f; color: #fff; padding: 8px 10%; display: flex; justify-content: flex-end; font-size: 12px; gap: 20px; }
+        
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(to right, #eef5ff, #fff);
+            padding: 20px 10%;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+        }
+        .logo-container { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-img { height: 80px; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15)); }
+        .logo-text h2 { color: var(--accent); font-size: 16px; text-transform: uppercase; margin: 0; }
+        .logo-text h1 { color: var(--primary); font-family: 'Montserrat'; font-size: 22px; line-height: 1.2; }
+
+        /* --- NAV (Sáng đèn mục Tin Tức) --- */
+        nav { background: var(--primary); display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: #fff; text-decoration: none; padding: 15px 25px; font-weight: 600; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.1); }
+        nav a.active { background: rgba(255,255,255,0.2); border-bottom: 3px solid #fff; }
+
+        /* --- NEWS TICKER (Tin chạy ngang) --- */
+        .news-ticker { background: #fff; height: 40px; display: flex; align-items: center; overflow: hidden; border-bottom: 1px solid #ddd; }
+        .ticker-title { background: var(--accent); color: white; padding: 0 20px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 13px; position: relative; z-index: 2; }
+        .ticker-content { display: flex; white-space: nowrap; animation: tickerLoop 30s linear infinite; }
+        .ticker-item { padding: 0 40px; font-size: 14px; color: #444; font-weight: 500; }
+        @keyframes tickerLoop { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* --- CONTENT --- */
+        .container { width: 80%; margin: 30px auto; display: grid; grid-template-columns: 2.5fr 1fr; gap: 30px; }
+        .content-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .section-title { font-family: 'Montserrat'; font-size: 24px; color: var(--primary); border-left: 6px solid var(--accent); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; }
+
+        .news-box { display: flex; gap: 20px; border-bottom: 1px solid #eee; padding-bottom: 25px; margin-bottom: 25px; }
+        .news-box:last-child { border-bottom: none; }
+        .news-date { background: #f0f4ff; color: var(--primary); padding: 15px; border-radius: 10px; text-align: center; min-width: 80px; height: fit-content; }
+        .news-date span { display: block; font-weight: bold; font-family: 'Montserrat'; }
+        .news-info h3 { font-family: 'Montserrat'; color: var(--primary); font-size: 18px; margin-bottom: 10px; }
+        .news-info p { font-size: 14px; color: #555; }
+
+        /* Sidebar */
+        .side-box { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        footer { background: #001a35; color: #fff; text-align: center; padding: 30px; margin-top: 50px; font-size: 13px; opacity: 0.8; }
+
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; width: 95%; } }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span><i class="fa fa-clock"></i> <span id="clock">Đang tải...</span></span>
+        <span><i class="fa fa-shield-alt"></i> HỆ THỐNG AN TOÀN (V3.0)</span>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="https://static.wixstatic.com/media/9d8ed5_64b820680dbe4c408e41f203c994f8b5~mv2.png" class="logo-img">
+            <div class="logo-text">
+                <h2>CỔNG THÔNG TIN ĐIỆN TỬ</h2>
+                <h1>HỆ THỐNG PAFVN CHÍNH QUY</h1>
+            </div>
+        </a>
+    </header>
+
+    <nav>
+        <a href="index.html">TRANG CHỦ</a>
+        <a href="gioi_thieu.html">GIỚI THIỆU</a>
+        <a href="tin_tuc.html" class="active">TIN TỨC</a>
+        <a href="dich_vu.html">DỊCH VỤ CÔNG</a>
+        <a href="lien_he.html">LIÊN HỆ</a>
+    </nav>
+
+    <div class="news-ticker">
+        <div class="ticker-title">TIN MỚI</div>
+        <div class="ticker-content">
+            <div class="ticker-item">⚠️ Chào mừng bạn đến với Cổng thông tin điện tử PAFVN Government.</div>
+            <div class="ticker-item">📢 [THÔNG BÁO] Hệ thống đã chuyển đổi sang cấu trúc đa trang chuyên nghiệp.</div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section>
+            <div class="content-card">
+                <h2 class="section-title">THÔNG BÁO & SẮC LỆNH</h2>
+                
+                <div class="news-box">
+                    <div class="news-date">
+                        <span style="font-size: 20px;">21</span>
+                        <span style="font-size: 12px;">TH 3</span>
+                    </div>
+                    <div class="news-info">
+                        <h3>Vận hành hệ thống Cổng thông tin điện tử v3.0</h3>
+                        <p>Toàn bộ cơ sở dữ liệu quốc gia đã được đồng bộ hóa thành công. Yêu cầu các đơn vị trực thuộc kiểm tra giao diện và báo cáo lỗi nếu có.</p>
+                    </div>
+                </div>
+
+                <div class="news-box">
+                    <div class="news-date">
+                        <span style="font-size: 20px;">20</span>
+                        <span style="font-size: 12px;">TH 3</span>
+                    </div>
+                    <div class="news-info">
+                        <h3>Sắc lệnh về việc đảm bảo an ninh mạng cộng đồng</h3>
+                        <p>Nghiêm cấm các hành vi xâm nhập, phá hoại hoặc spam trên các nền tảng thông tin của chính phủ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside>
+            <div class="side-box">
+                <h4 style="color: var(--primary); font-family: 'Montserrat'; border-bottom: 1px solid #eee; padding-bottom: 10px;">LOẠI TIN</h4>
+                <ul style="list-style: none; margin-top: 10px; font-size: 14px;">
+                    <li style="padding: 5px 0;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--accent);"></i> Thông báo chung</li>
+                    <li style="padding: 5px 0;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--accent);"></i> Sắc lệnh quân sự</li>
+                    <li style="padding: 5px 0;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--accent);"></i> Tuyển dụng</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        &copy; 2026 BẢN QUYỀN THUỘC VỀ PAFVN - OPTIMIZED BY SMOL
+    </footer>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const clockEl = document.getElementById('clock');
+            if(clockEl) clockEl.innerText = "lúc " + now.toLocaleDateString('vi-VN', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+</html>

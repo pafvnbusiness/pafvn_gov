@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANG CHỦ | PAFVN GOVERNMENT</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Be+Vietnam+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #0091ff;
+            --accent: #d32f2f;
+            --discord: #5865F2;
+            --bg-light: #f4f7fa;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Be Vietnam Pro', sans-serif; 
+            background-color: var(--bg-light); 
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background: #002d5f;
+            color: #fff;
+            padding: 8px 10%;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 12px;
+            gap: 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(to right, #eef5ff, #fff);
+            padding: 20px 10%;
+            display: flex;
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+        }
+        .logo-container { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+        .logo-img { 
+            height: 100px; 
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.15));
+            transition: 0.5s;
+        }
+        .logo-container:hover .logo-img { transform: scale(1.05); }
+        .logo-text h2 { color: var(--accent); font-size: 18px; text-transform: uppercase; margin: 0; }
+        .logo-text h1 { color: var(--primary); font-family: 'Montserrat'; font-size: 26px; line-height: 1.2; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--primary);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #fff; text-decoration: none; padding: 18px 25px;
+            font-weight: 600; font-size: 14px; text-transform: uppercase;
+            transition: var(--transition);
+        }
+        nav a:hover, nav a.active { background: rgba(255,255,255,0.2); color: #fff; border-bottom: 3px solid #fff; }
+
+        /* --- NEWS TICKER --- */
+        .news-ticker {
+            background: #fff; height: 40px; display: flex; align-items: center;
+            overflow: hidden; border-bottom: 1px solid #ddd;
+        }
+        .ticker-title {
+            background: var(--accent); color: white; padding: 0 20px; height: 100%;
+            display: flex; align-items: center; font-weight: bold; font-size: 13px;
+            white-space: nowrap; position: relative; z-index: 2;
+        }
+        .ticker-title::after {
+            content: ''; position: absolute; right: -15px;
+            border-top: 20px solid transparent; border-bottom: 20px solid transparent;
+            border-left: 15px solid var(--accent);
+        }
+        .ticker-content {
+            display: flex; white-space: nowrap; animation: tickerLoop 40s linear infinite;
+        }
+        .ticker-item { padding: 0 40px; font-size: 14px; color: #444; font-weight: 500; }
+        @keyframes tickerLoop { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .news-ticker:hover .ticker-content { animation-play-state: paused; }
+
+        /* --- HERO BANNER --- */
+        .hero-banner {
+            width: 80%; margin: 30px auto; height: 450px;
+            border-radius: 15px; overflow: hidden; position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .hero-banner img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 40px 30px 20px; color: #fff;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container { 
+            width: 80%; margin: 0 auto; display: grid; 
+            grid-template-columns: 2.5fr 1fr; gap: 30px; padding-bottom: 60px; 
+        }
+
+        .section-title {
+            font-family: 'Montserrat'; font-size: 20px; color: var(--primary);
+            border-left: 5px solid var(--accent); padding-left: 15px; margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .content-card {
+            background: #fff; border-radius: 12px; padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Sidebar Boxes */
+        .side-box {
+            background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: var(--transition);
+        }
+        .side-box:hover { transform: translateY(-5px); }
+
+        .btn-discord {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--discord); color: white !important; text-decoration: none;
+            padding: 12px; border-radius: 8px; font-weight: 700; margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-discord:hover { background: #4752c4; box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4); }
+
+        /* --- FOOTER --- */
+        footer { background: #001a35; color: #cbd5e0; padding: 60px 10% 20px; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-logo { height: 80px; margin-bottom: 20px; }
+        .footer-title { color: #fff; font-size: 18px; margin-bottom: 20px; border-bottom: 1px solid #2d3748; padding-bottom: 10px; }
+        .footer-links { list-style: none; }
+        .footer-links a { color: #a0aec0; text-decoration: none; transition: 0.3s; display: block; margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--secondary); padding-left: 8px; }
+
+        .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #1a202c; font-size: 12px; opacity: 0.6; }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 992px) {
+            .container { grid-template-columns: 1fr; width: 95%; }
+            .hero-banner { width: 95%; height: 300px; }
+            nav a { padding: 15px 10px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span><i class="fa fa-clock"></i> <span id="clock"></span></span>
+        <span><i class="fa fa-shield-alt"></i> HỆ THỐNG ĐƯỢC THIẾT LẬP BỞI SMOL</span>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="https://static.wixstatic.com/media/9d8ed5_64b820680dbe4c408e41f203c994f8b5~mv2.png/v1/fill/w_980,h_996,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/9d8ed5_64b820680dbe4c408e41f203c994f8b5~mv2.png" class="logo-img" alt="Logo PAFVN">
+            <div class="logo-text">
+                <h2>CỔNG THÔNG TIN ĐIỆN TỬ</h2>
+                <h1>HỆ THỐNG PAFVN CHÍNH QUY</h1>
+            </div>
+        </a>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active"><i class="fa fa-home"></i> TRANG CHỦ</a>
+        <a href="gioi_thieu.html">GIỚI THIỆU</a>
+        <a href="tin_tuc.html">TIN TỨC</a>
+        <a href="dich_vu.html">DỊCH VỤ CÔNG</a>
+        <a href="lien_he.html">LIÊN HỆ</a>
+    </nav>
+
+    <div class="news-ticker">
+        <div class="ticker-title">TIN MỚI</div>
+        <div class="ticker-content">
+            <div class="ticker-item">⚠️ Chào mừng bạn đến với Cổng thông tin điện tử PAFVN Government mới.</div>
+            <div class="ticker-item">📢 [THÔNG BÁO] Hệ thống đã chuyển đổi sang cấu trúc đa trang chuyên nghiệp.</div>
+            <div class="ticker-item">⭐ Chúc các thành viên có trải nghiệm Roleplay tuyệt vời nhất.</div>
+        </div>
+    </div>
+
+    <div class="hero-banner reveal">
+        <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2024/03/hinh-nen-powerpoint-ve-dang-cong-san-viet-nam-9.jpg" alt="Banner Chính phủ">
+        <div class="hero-caption">
+            <h2 style="font-family: 'Montserrat';">QUANG VINH MUÔN NĂM - VIỆT NAM MUÔN NĂM</h2>
+            <p>Nền tảng quản lý dữ liệu và điều hành tập trung PAFVN 2026</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <section>
+            <h2 class="section-title">THÔNG TIN ĐIỀU HÀNH</h2>
+            <div class="content-card reveal">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">Thông báo vận hành hệ thống</h3>
+                <p>Hệ thống PAFVN Government chính thức đi vào hoạt động với giao diện đa trang. Điều này giúp tăng tốc độ tải trang và tối ưu hóa trải nghiệm cho các cán bộ và công dân.</p>
+                <br>
+                <p>Mọi dữ liệu cũ đã được đồng bộ hóa. Các cán bộ vui lòng kiểm tra lại thông tin tại các mục tương ứng trên thanh Menu.</p>
+                <hr style="margin: 20px 0; opacity: 0.1;">
+                <p><i>Trân trọng, Ban Quản Trị Hệ Thống.</i></p>
+            </div>
+        </section>
+
+        <aside>
+            <h2 class="section-title">KẾT NỐI</h2>
+            <div class="side-box reveal" style="border-left: 5px solid var(--discord);">
+                <h4 style="color: var(--discord);"><i class="fab fa-discord"></i> DISCORD SERVER</h4>
+                <p style="font-size: 13px; margin-top: 10px;">Kết nối với Server Discord chính thức để nhận thông báo khẩn.</p>
+                <a href="https://discord.com/invite/DKFrSB9uW8" target="_blank" class="btn-discord">THAM GIA NGAY</a>
+            </div>
+
+            <div class="side-box reveal">
+                <h4><i class="fa fa-signal"></i> TRẠNG THÁI</h4>
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 12px;">
+                    <span style="width: 12px; height: 12px; background: #2ecc71; border-radius: 50%; display: inline-block; animation: pulseGreen 1.5s infinite;"></span>
+                    <span style="font-size: 14px; font-weight: bold; color: #2ecc71;">MÁY CHỦ ỔN ĐỊNH</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="reveal">
+                <img src="https://static.wixstatic.com/media/9d8ed5_64b820680dbe4c408e41f203c994f8b5~mv2.png/v1/fill/w_980,h_996,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/9d8ed5_64b820680dbe4c408e41f203c994f8b5~mv2.png" class="footer-logo">
+                <h3 style="color:#fff;">PAFVN GOVERNMENT</h3>
+                <p style="font-size:13px; margin-top:10px;">Hệ thống thông tin chính thống của cộng đồng PAFVN Roleplay.</p>
+            </div>
+            <div class="reveal">
+                <h4 class="footer-title">DANH MỤC NHANH</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="gioi-thieu.html">Giới thiệu tổ chức</a></li>
+                    <li><a href="dich-vu.html">Dịch vụ công</a></li>
+                    <li><a href="tin-tuc.html">Tin tức & Thông báo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 BẢN QUYỀN THUỘC VỀ PAFVN - All Right Reserved</p>
+            <p style="margin-top:5px; opacity:0.5;">OPTIMIZED BY SMOL SYSTEM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cập nhật đồng hồ hệ thống
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('clock').innerText = now.toLocaleDateString('vi-VN', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Hiệu ứng hiện hình khi cuộn
+        ScrollReveal().reveal('.reveal', {
+            distance: '40px',
+            duration: 800,
+            easing: 'ease-in-out',
+            origin: 'bottom',
+            interval: 150
+        });
+    </script>
+</body>
+</html>
